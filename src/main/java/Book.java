@@ -20,4 +20,12 @@ public class Book extends Product {
         this.publisher = publisher;
     }
 
+    @Override
+    public String toString() {
+        return  super.toString() +
+                ", publisher: '" + publisher + '\'' +
+                ", pagesNumber: " + pagesNumber +
+                ", hardcover: '" + hardcover + '\'' +
+                ", author: '" + author + '\'' ;
+    }
 }

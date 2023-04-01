@@ -5,4 +5,9 @@ public class ExternalSupplies extends Electronics {
         this.compatibleDevices = compatibleDevices;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", compatibleDevices: '" + compatibleDevices + '\'';
+    }
 }

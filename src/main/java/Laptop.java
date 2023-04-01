@@ -23,4 +23,13 @@ public class Laptop extends Electronics {
     public int getRam() {
         return ram;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", gpu: '" + gpu + '\'' +
+                ", cpu: '" + cpu + '\'' +
+                ", ram: " + ram +
+                ", fingerprint: '" + fingerprint + '\'';
+    }
 }

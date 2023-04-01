@@ -14,4 +14,13 @@ public class Clothing extends Product {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return
+                super.toString() +
+                ", type:'" + type + '\'' +
+                ", sex:'" + sex + '\'' +
+                ", size:" + size;
+    }
 }

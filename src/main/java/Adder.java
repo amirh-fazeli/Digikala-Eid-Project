@@ -17,15 +17,18 @@ public class Adder {
 
                 switch (Integer.parseInt(scan.nextLine())){
                     case 1:
-                        service.addProduct(inputLaptop(seller));
-                        seller.addProducts(inputLaptop(seller));
+                        Laptop laptop=inputLaptop(seller);
+                        service.addProduct(laptop);
+                        seller.addProducts(laptop);
 
                     case 2:
-                        service.addProduct(inputPhone(seller));
-                        seller.addProducts(inputPhone(seller));
+                        Phone phone=inputPhone(seller);
+                        service.addProduct(phone);
+                        seller.addProducts(phone);
                     case 3:
-                        service.addProduct(inputExternal(seller));
-                        seller.addProducts(inputExternal(seller));
+                        ExternalSupplies ex=inputExternal(seller);
+                        service.addProduct(ex);
+                        seller.addProducts(ex);
 
                     case 4:
                         Electronics electronic=new Electronics();
@@ -38,44 +41,61 @@ public class Adder {
                 break;
 
             case 2:
-                service.addProduct(inputDecor(seller));
-                seller.addProducts(inputDecor(seller));
+                Decor decor=inputDecor(seller);
+                service.addProduct(decor);
+                seller.addProducts(decor);
+                break;
 
             case 3:
-                service.addProduct(inputGrocery(seller));
-                seller.addProducts(inputGrocery(seller));
+                Grocery grocery=inputGrocery(seller);
+                service.addProduct(grocery);
+                seller.addProducts(grocery);
+                break;
 
             case 4:
-                service.addProduct(inputSanitary(seller));
-                seller.addProducts(inputSanitary(seller));
+                Sanitary sanitary=inputSanitary(seller);
+                service.addProduct(sanitary);
+                seller.addProducts(sanitary);
+                break;
 
             case 5:
                 System.out.println("1.electrical\n2.non-electrical");
 
                 switch (Integer.parseInt(scan.nextLine())){
                     case 1:
-                        service.addProduct(inputEtool(seller));
-                        seller.addProducts(inputEtool(seller));
+                        Etool etool=inputEtool(seller);
+                        service.addProduct(etool);
+                        seller.addProducts(etool);
+                        break;
 
                     case 2:
                         Tool tool=new Tool();
                         setTool(tool);
+                        setGenerals(seller,tool);
                         setOtherProperties(tool);
                         service.addProduct(tool);
                         seller.addProducts(tool);
+                        break;
                 }
+                break;
 
             case 6:
-                service.addProduct(inputBook(seller));
-                seller.addProducts(inputBook(seller));
+                Book book = inputBook(seller);
+                service.addProduct(book);
+                seller.addProducts(book);
+                break;
 
             case 7:
-                service.addProduct(inputClothing(seller));
-                seller.addProducts(inputClothing(seller));
+                Clothing clothing=inputClothing(seller);
+                service.addProduct(clothing);
+                seller.addProducts(clothing);
+                break;
 
             case 8:
-                service.addProduct(inputKid(seller));
-                seller.addProducts(inputKid(seller));
+                Kid kid=inputKid(seller);
+                service.addProduct(kid);
+                seller.addProducts(kid);
+                break;
 
             case 9:
                 Product product=new Product();
@@ -83,6 +103,7 @@ public class Adder {
                 setOtherProperties(product);
                 service.addProduct(product);
                 seller.addProducts(product);
+                break;
 
         }
         System.out.println("your product successfully added");

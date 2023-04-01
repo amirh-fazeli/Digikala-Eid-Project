@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Sanitary extends Product{
     private int mass;
-    private ArrayList<String> ingredient;
+    private ArrayList<String> ingredient = new ArrayList<String>();
     private String country;
 
     public void setMass(int mass) {
@@ -15,5 +15,13 @@ public class Sanitary extends Product{
 
     public void setIngredient(ArrayList ingredient) {
         this.ingredient = ingredient;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", mass: " + mass +
+                ", ingredient: " + ingredient +
+                ", country: '" + country + '\'';
     }
 }

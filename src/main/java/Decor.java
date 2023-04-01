@@ -14,4 +14,12 @@ public class Decor extends Product {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", size: " + size +
+                ", weight: " + weight +
+                ", color: '" + color + '\'';
+    }
 }

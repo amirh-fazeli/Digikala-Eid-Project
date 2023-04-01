@@ -2,11 +2,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DigikalaService {
-    public ArrayList<Product> productList;
+    public ArrayList<Product> productList = new ArrayList<Product>();
     public ArrayList<User> userList=new ArrayList<User>();
     public ArrayList<Admin> adminList=new ArrayList<Admin>();
     public ArrayList<Seller> sellerList=new ArrayList<Seller>();
     public ArrayList<UserRequest> userRequestList=new ArrayList<UserRequest>();
+    public ArrayList<OrderRequest> orderRequestList=new ArrayList<OrderRequest>();
     public ArrayList<SellerRequest> sellerRequestList=new ArrayList<SellerRequest>();
 
 
@@ -38,6 +39,15 @@ public class DigikalaService {
         int ind= userIndex(username);
 
         if(userList.get(ind).getPassword().equals(password)){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean sellerPasswordCheck(String username, String password) {
+        int ind= sellerIndex(username);
+
+        if(sellerList.get(ind).getPassword().equals(password)){
             return true;
         }
         return false;
@@ -129,8 +139,10 @@ public class DigikalaService {
         System.out.println("insert name of the product you want to search");
         String title=scan.nextLine();
         for(int i=0;i<productList.size();i++){
-            if(productList.get(i).getName().contains(title) || title.contains(productList.get(i).getName())){
-                result.add(productList.get(i));
+            if(productList.get(i).getName().contains(title) || title.contains(productList.get(i).getName())) {
+                if (productList.get(i).getQuantity() > 0) {
+                    result.add(productList.get(i));
+                }
             }
         }
         System.out.println("do you want to apply a price limit? yes/no");
@@ -162,24 +174,36 @@ public class DigikalaService {
             viewProductList(result);
 
             System.out.println("choose an item");
-            Product choice=result.get(Integer.parseInt(scan.nextLine()) - 1);
+            int choice=Integer.parseInt(scan.nextLine()) - 1;
 
             System.out.println("what do you want to do with this product?");
             System.out.println("1.add to cart\n2.view full details");
 
             switch (Integer.parseInt(scan.nextLine())){
                 case 1:
-                    user.addToCart(choice);
-                    System.out.println(choice.getName() + " added to cart");
+                    if(!user.cartKeys.contains(result.get(choice))) {
+                        user.addToCart(result.get(choice),scan);
+                        System.out.println(result.get(choice).getName() + " added to cart");
+                    }
+
+                    else{
+                        System.out.println(result.get(choice).getName() + " is already in your cart, do you want to" +
+                                " remove it? yes/no");
+
+                        if (scan.nextLine().equals("yes")){
+                            user.cart.remove(result.get(choice));
+                            System.out.println("removed successfully");
+                        }
+                    }
                     break;
 
                 case 2:
-                    choice.viewProduct();
+                    System.out.println(result.get(choice));
                     System.out.println("do you want to add this to your cart? yes/no");
 
                     if(scan.nextLine().equals("yes")){
-                        user.addToCart(choice);
-                        System.out.println(choice.getName() + " added to cart");
+                        user.addToCart(result.get(choice),scan);
+                        System.out.println(result.get(choice).getName() + " added to cart");
                     }
                     break;
             }
@@ -188,7 +212,13 @@ public class DigikalaService {
 
     public void viewProductList(ArrayList<Product> list){
         for(int i=0;i<list.size();i++){
-            System.out.println(i + ". " + list.get(i).viewProduct());
+            System.out.println(i+1 + ". " + list.get(i).viewProduct());
+        }
+    }
+
+    public static void viewArray(ArrayList array) {
+        for (int i = 0; i < array.size(); i++) {
+            System.out.println(i + 1 + "." + array.get(i));
         }
     }
 }

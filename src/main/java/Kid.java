@@ -4,4 +4,10 @@ public class Kid extends Product{
     public void setAge(String age) {
         this.age = age;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", recommended age: '" + age + '\'';
+    }
 }

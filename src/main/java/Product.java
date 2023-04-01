@@ -1,14 +1,13 @@
 import java.util.ArrayList;
 
 public class Product {
-    private String name;
-    private Seller seller;
-    private String company;
-    private int price;
-    private int quantity;
-    private ArrayList<String> other;
-    private ArrayList<String> commentList;
-
+    protected String name;
+    protected Seller seller;
+    protected String company;
+    protected int price;
+    protected int quantity;
+    protected ArrayList<String> other = new ArrayList<String>();
+    protected ArrayList<Integer> ratings = new ArrayList<Integer>();
     public void setName(String name) {
         this.name = name;
     }
@@ -29,8 +28,23 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public void addComments(String comment) {
-        commentList.add(comment);
+    public void addRating(int rate) {
+        ratings.add(rate);
+    }
+
+    public double rate(){
+        double ans=0;
+        for (Integer rating : ratings) {
+            ans += rating;
+        }
+
+        if(ratings.size()>0) {
+            return ans / ratings.size();
+        }
+
+        else{
+            return 0;
+        }
     }
 
     public void setSeller(Seller seller) {
@@ -55,5 +69,15 @@ public class Product {
 
     public String viewProduct(){
         return name + ", " + company + ", " + price + " dollars";
+    }
+
+    @Override
+    public String toString() {
+        return "name: '" + name + '\'' +
+                ", rating: " + rate() + " based on " + ratings.size() + " reviews" +
+                ", company: '" + company + '\'' +
+                ", price: " + price +
+                ", quantity: " + quantity +
+                ", properties: " + other;
     }
 }

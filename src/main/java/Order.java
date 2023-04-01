@@ -23,16 +23,16 @@ public class Order {
 
             switch (Integer.parseInt(scan.nextLine())){
                 case 1:
-                    user.addToCart(choice);
+                    user.addToCart(result.get(Integer.parseInt(scan.nextLine()) - 1),scan);
                     System.out.println(choice.getName() + " added to cart");
                     break;
 
                 case 2:
-                    choice.viewProduct();
+                    System.out.println(result.get(Integer.parseInt(scan.nextLine()) - 1));
                     System.out.println("do you want to add this to your cart? yes/no");
 
                     if(scan.nextLine().equals("yes")){
-                        user.addToCart(choice);
+                        user.addToCart(choice,scan);
                         System.out.println(choice.getName() + " added to cart");
                     }
                     break;

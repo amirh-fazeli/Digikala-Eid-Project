@@ -3,11 +3,11 @@ import java.util.ArrayList;
 public class Seller {
     private String username;
     private String password;
-    private int balance;
+    private double balance;
     public SellerRequest request;
     public ArrayList<Product> products=new ArrayList<Product>();
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -41,5 +41,9 @@ public class Seller {
 
     public SellerRequest getRequest() {
         return request;
+    }
+
+    public double getBalance() {
+        return balance;
     }
 }
