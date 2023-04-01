@@ -102,8 +102,8 @@ public class Main {
         Scanner scan=new Scanner(System.in);
 
         while (k) {
-            System.out.println("what do you want to do? \n1.add admin \n2.user requests");
-            System.out.println("3.seller requests \n4.order requests \n5.exit");
+            System.out.println("what do you want to do? \n1.add admin \n2.user balance requests");
+            System.out.println("3.seller requests \n4.purchase requests \n5.exit");
 
             switch (Integer.parseInt(scan.nextLine())) {
                 case 1:
@@ -152,7 +152,7 @@ public class Main {
         while (k) {
             System.out.println(seller.getUsername() + "                   balance: " + seller.getBalance());
             System.out.println("what do you want to do? \n1.add products \n2.view your products");
-            System.out.println("3.seller requests \n4.purchase requests \n5.exit");
+            System.out.println("\n3.exit");
 
             switch (Integer.parseInt(scan.nextLine())) {
                 case 1:
@@ -170,21 +170,6 @@ public class Main {
                     break;
 
                 case 3:
-                    while (true) {
-                        AccountHandling.decideSellerRequest(service);
-
-                        System.out.println("do you want to check another request? yes/no");
-
-                        if(!scan.nextLine().equals("yes")){
-                            break;
-                        }
-                    }
-                    break;
-
-                case 4:
-                    break;
-
-                case 5:
                     k=false;
                     break;
             }
