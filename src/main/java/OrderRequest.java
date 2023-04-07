@@ -23,14 +23,6 @@ public class OrderRequest {
         this.status = status;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
     public User getUser() {
         return user;
     }
