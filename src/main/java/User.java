@@ -48,6 +48,40 @@ public class User {
         }
     }
 
+    public void rate(DigikalaService service,Scanner scan){
+        if(allBought.size()>0) {
+            service.viewProductList(allBought);
+            System.out.println("choose an item");
+            int ch = Integer.parseInt(scan.nextLine()) - 1;
+
+            if (rated.containsKey(allBought.get(ch))) {
+                System.out.println("you have already rated this product do you want to change it? yes/no");
+
+                if (scan.nextLine().equals("no")) {
+                    return;
+                }
+            }
+
+            System.out.println("rate from 0 to 5");
+            while (true) {
+                int rate = Integer.parseInt(scan.nextLine());
+
+                if (rate >= 0 && rate <= 5) {
+                    rated.put(allBought.get(ch), rate);
+                    allBought.get(ch).addRating(rate);
+                    System.out.println("rated successfully");
+                    return;
+                } else {
+                    System.out.println("your rating should be in range of 0 to 5");
+                }
+            }
+        }
+
+        else{
+            System.out.println("you haven't bought any items yet");
+        }
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }

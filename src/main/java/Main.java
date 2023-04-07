@@ -112,7 +112,7 @@ public class Main {
 
                 case 2:
                     while (true) {
-                        AccountHandling.decideUserRequest(service);
+                        RequestHandling.decideUserRequest(service);
 
                         System.out.println("do you want to check another request? yes/no");
 
@@ -124,7 +124,7 @@ public class Main {
 
                 case 3:
                     while (true) {
-                        AccountHandling.decideSellerRequest(service);
+                        RequestHandling.decideSellerRequest(service);
 
                         System.out.println("do you want to check another request? yes/no");
 
@@ -135,7 +135,7 @@ public class Main {
                     break;
 
                 case 4:
-                    AccountHandling.decideOrderRequest(service,scan);
+                    RequestHandling.decideOrderRequest(service,scan);
                     break;
 
                 case 5:
@@ -188,7 +188,7 @@ public class Main {
 
             switch (Integer.parseInt(scan.nextLine())) {
                 case 1:
-                    AccountHandling.writeUserRequest(service,user);
+                    RequestHandling.writeUserRequest(service,user);
                     break;
 
                 case 2:
@@ -213,7 +213,7 @@ public class Main {
                         System.out.println("do you want to purchase this cart? yes/no");
                         if (scan.nextLine().equals("yes")) {
                             if (user.cartPrice() <= user.getWallet()) {
-                                AccountHandling.writeOrderRequest(service, user, scan);
+                                RequestHandling.writeOrderRequest(service, user, scan);
                             } else {
                                 System.out.println("your balance does not suffice with this cart");
                             }
@@ -230,7 +230,7 @@ public class Main {
                     break;
 
                 case 6:
-                    AccountHandling.rate(service,user,scan);
+                    user.rate(service,scan);
                     break;
 
                 case 7:
