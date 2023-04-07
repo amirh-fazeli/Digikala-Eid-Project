@@ -177,7 +177,7 @@ public class DigikalaService {
             int choice=Integer.parseInt(scan.nextLine()) - 1;
 
             System.out.println("what do you want to do with this product?");
-            System.out.println("1.add to cart\n2.view full details");
+            System.out.println("1.add to cart\n2.view full details\n3.view comments");
 
             switch (Integer.parseInt(scan.nextLine())){
                 case 1:
@@ -206,6 +206,16 @@ public class DigikalaService {
                         System.out.println(result.get(choice).getName() + " added to cart");
                     }
                     break;
+
+                case 3:
+                    result.get(choice).viewComments();
+                    System.out.println("do you want to add this product to your cart? yes/no");
+
+                    if(scan.nextLine().equals("yes")){
+                        user.addToCart(result.get(choice),scan);
+                        System.out.println(result.get(choice).getName() + " added to cart");
+                    }
+                    break;
             }
         }
     }
@@ -216,9 +226,4 @@ public class DigikalaService {
         }
     }
 
-    public static void viewArray(ArrayList array) {
-        for (int i = 0; i < array.size(); i++) {
-            System.out.println(i + 1 + "." + array.get(i));
-        }
-    }
 }

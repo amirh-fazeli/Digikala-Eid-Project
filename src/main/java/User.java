@@ -48,7 +48,7 @@ public class User {
         }
     }
 
-    public void rate(DigikalaService service,Scanner scan){
+    public void rateAndComment(DigikalaService service, Scanner scan){
         if(allBought.size()>0) {
             service.viewProductList(allBought);
             System.out.println("choose an item");
@@ -70,10 +70,18 @@ public class User {
                     rated.put(allBought.get(ch), rate);
                     allBought.get(ch).addRating(rate);
                     System.out.println("rated successfully");
-                    return;
+                    break;
                 } else {
                     System.out.println("your rating should be in range of 0 to 5");
                 }
+            }
+
+            System.out.println("do you want to comment on this product? yes/no");
+
+            if (scan.nextLine().equals("yes")){
+                System.out.println("insert your comment");
+                allBought.get(ch).addComment(scan.nextLine());
+                System.out.println("your comment submitted successfully");
             }
         }
 
@@ -123,7 +131,7 @@ public class User {
         for(int i=0;i<cart.size();i++){
             allBought.add(cartKeys.get(i));
             cartKeys.get(i).getSeller().setBalance(cartKeys.get(i).getSeller().getBalance() +
-                    (0.2 * cartKeys.get(i).getPrice()));
+                    (0.9 * cartKeys.get(i).getPrice()));
             cartKeys.get(i).setQuantity(cartKeys.get(i).quantity - cart.get(cartKeys.get(i)));
         }
         setWallet(wallet - cartPrice());

@@ -304,7 +304,7 @@ public class Adder {
         setTool(etool);
 
         System.out.println("voltage: ");
-        etool.setWeight(Integer.parseInt(scan.nextLine()));
+        etool.setVoltage(Integer.parseInt(scan.nextLine()));
 
         setOtherProperties(etool);
 

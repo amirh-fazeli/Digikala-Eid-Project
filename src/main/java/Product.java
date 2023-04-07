@@ -7,10 +7,16 @@ public class Product {
     protected int price;
     protected int quantity;
     protected ArrayList<String> other = new ArrayList<String>();
+    protected ArrayList<String> comments = new ArrayList<String>();
     protected ArrayList<Integer> ratings = new ArrayList<Integer>();
     public void setName(String name) {
         this.name = name;
     }
+
+    public void addComment(String comment) {
+        comments.add(comment);
+    }
+
 
     public void setCompany(String company) {
         this.company = company;
@@ -70,6 +76,20 @@ public class Product {
     public String viewProduct(){
         return name + ", " + company + ", " + price + " dollars";
     }
+
+    public void viewComments(){
+         if (comments.size()==0){
+             System.out.println("there is no comments on this product");
+         }
+
+         else{
+             for (int i=0;i<comments.size();i++){
+                 System.out.println(i + "." + comments.get(i));
+             }
+         }
+
+    }
+
 
     @Override
     public String toString() {

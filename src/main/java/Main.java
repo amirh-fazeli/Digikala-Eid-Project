@@ -31,7 +31,7 @@ public class Main {
                 case 2:
                     k = true;
                     while (k) {
-                        System.out.println("1.sign up \n2.log in\n3.exit");
+                        System.out.println("1.sign up\n2.log in\n3.exit");
 
                         System.out.println("insert an number: ");
 
@@ -151,8 +151,7 @@ public class Main {
 
         while (k) {
             System.out.println(seller.getUsername() + "                   balance: " + seller.getBalance());
-            System.out.println("what do you want to do? \n1.add products \n2.view your products");
-            System.out.println("\n3.exit");
+            System.out.println("what do you want to do? \n1.add products \n2.view your products \n3.exit");
 
             switch (Integer.parseInt(scan.nextLine())) {
                 case 1:
@@ -230,7 +229,7 @@ public class Main {
                     break;
 
                 case 6:
-                    user.rate(service,scan);
+                    user.rateAndComment(service,scan);
                     break;
 
                 case 7:
@@ -260,49 +259,52 @@ public class Main {
         SellerRequest req=new SellerRequest();
         req.setStatus("approved");
 
-        User kh=new User();
-        kh.setPassword("Amir1383");
-        kh.setUsername("amir");
-        kh.setWallet(1000);
-        kh.addAddress("khkhkh");
-        service.addUser(kh);
+        User user=new User();
+        user.setPassword("Amir1383");
+        user.setUsername("amir");
+        user.setWallet(1000);
+        user.addAddress("khkhkh");
+        service.addUser(user);
 
-        Seller ch=new Seller();
-        ch.setPassword("Amir1383");
-        ch.setUsername("atefe");
-        ch.setRequest(req);
-        service.addSeller(ch);
+        Seller seller1=new Seller();
+        seller1.setPassword("Amir1383");
+        seller1.setUsername("atefe");
+        seller1.setRequest(req);
+        service.addSeller(seller1);
 
-        Seller ph=new Seller();
-        ph.setPassword("Amir1383");
-        ph.setUsername("arefe");
-        ph.setRequest(req);
-        service.addSeller(ph);
+        Seller seller2=new Seller();
+        seller2.setPassword("Amir1383");
+        seller2.setUsername("arefe");
+        seller2.setRequest(req);
+        service.addSeller(seller2);
 
-        Product p= new Product();
-        p.setName("galaxy phone");
-        p.setPrice(800);
-        p.setSeller(ch);
-        ch.products.add(p);
-        service.addProduct(p);
+        Product product1= new Product();
+        product1.setName("galaxy phone");
+        product1.setPrice(800);
+        product1.setSeller(seller1);
+        seller1.products.add(product1);
+        product1.setQuantity(100);
+        service.addProduct(product1);
 
-        Product o= new Product();
-        o.setName("iphone phone");
-        o.setPrice(900);
-        o.setSeller(ph);
-        ph.products.add(o);
-        service.addProduct(o);
+        Product product2= new Product();
+        product2.setName("iphone phone");
+        product2.setPrice(900);
+        product2.setSeller(seller1);
+        product2.setQuantity(12);
+        seller1.products.add(product2);
+        service.addProduct(product2);
 
-        Book b= new Book();
-        b.setName("pride and prejudice");
-        b.setPrice(12);
-        b.setSeller(ph);
-        b.setHardcover("yes");
-        b.setPagesNumber(320);
-        b.setAuthor("jane austin");
-        b.setPublisher("atash");
-        b.setQuantity(12);
-        ph.products.add(b);
-        service.addProduct(b);
+        Book book= new Book();
+        book.setName("pride and prejudice");
+        book.setPrice(12);
+        book.setSeller(seller1);
+        book.setHardcover("yes");
+        book.setPagesNumber(320);
+        book.setAuthor("jane austin");
+        book.setPublisher("atash");
+        book.setQuantity(12);
+        seller1.products.add(book);
+        service.addProduct(book);
+
     }
 }
